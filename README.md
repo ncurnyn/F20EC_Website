@@ -1,78 +1,21 @@
-# Simple Django Login and Registration
+To run this locally:
 
-An example of Django project with basic user functionality.
+1. Clone the project
+2. Open the terminal and navigate to the parent folder of your virtual environment
+3. Activate your virtual environment with the command:
 
-## Screenshots
+                        ```
+                        source venv/bin/activate
+                        ```
+                        *you will know this works as you will see (venv) at the start of your command line
 
-| Log In | Create an account | Authorized page |
-| -------|--------------|-----------------|
-| <img src="./screenshots/login.png" width="200"> | <img src="./screenshots/create_an_account.png" width="200"> | <img src="./screenshots/authorized_page.png" width="200"> |
+4. Navigate to the source folder
+5. Make migrations using the command
+                        ```
+                        python source/manage.py migrate
+                        ```
 
-| Password reset | Set new password | Password change |
-| ---------------|------------------|-----------------|
-| <img src="./screenshots/password_reset.png" width="200"> | <img src="./screenshots/set_new_password.png" width="200"> | <img src="./screenshots/password_change.png" width="200"> |
-
-## Functionality
-
-- Log in
-    - via username & password
-    - via email & password
-    - via email or username & password
-    - with a remember me checkbox (optional)
-- Create an account
-- Log out
-- Profile activation via email
-- Reset password
-- Remind a username
-- Resend an activation code
-- Change password
-- Change email
-- Change profile
-- Multilingual: English, Russian, and Simplified Chinese
-
-
-## Installing
-
-### Clone the project
-
-```
-git clone https://github.com/egorsmkv/simple-django-login-and-register
-cd simple-django-login-and-register
-```
-
-### Install dependencies & activate virtualenv
-
-```
-pip install pipenv
-
-pipenv install
-pipenv shell
-```
-
-### Configure the settings (connection to the database, connection to an SMTP server, and other options)
-
-1. Edit `source/app/conf/development/settings.py` if you want to develop the project.
-
-2. Edit `source/app/conf/production/settings.py` if you want to run the project in production.
-
-### Apply migrations
-
-```
-python source/manage.py migrate
-```
-
-### Collect static files (only on a production server)
-
-```
-python source/manage.py collectstatic
-```
-
-### Running
-
-#### A development server
-
-Just run this command:
-
-```
-python source/manage.py runserver
-```
+6. Run the website using the command:
+                        ```
+                        python source/manage.py runserver
+                        ```
