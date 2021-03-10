@@ -6,11 +6,11 @@
 
     {% if request.user.is_authenticated %}
 
-        {% trans 'Your username is' %} <b>{{ request.user.username }}</b>.
+        {% trans 'Welcome,' %} <b>{{ request.user.username }}</b>.
 
     {% else %}
 
-        {% trans 'You are a guest.' %}
+        {% trans 'You are not logged in. Log in to view your homepage and movie recomendations.' %}
 
     {% endif %}
 
