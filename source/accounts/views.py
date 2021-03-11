@@ -329,3 +329,6 @@ class RestorePasswordDoneView(BasePasswordResetDoneView):
 
 class LogOutView(LoginRequiredMixin, BaseLogoutView):
     template_name = 'accounts/log_out.html'
+
+class MovieRecomendationsView(View):
+    template_name = 'accounts/recomendation.html'
