@@ -15,5 +15,7 @@ To run this locally:
 
 6. Run the website using the command:
 
-      python source/manage.py runserver
+       python source/manage.py runserver
+      
+7. Go to the URL that it states in the terminal to view the website
 
