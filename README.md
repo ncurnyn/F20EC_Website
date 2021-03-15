@@ -5,6 +5,7 @@ To run this locally:
 3. Activate your virtual environment with the command:
 
  source venv/bin/activate
+ 
  *you will know this works as you will see (venv) at the start of your command line*
 
 4. Navigate to the source folder
