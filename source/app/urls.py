@@ -3,7 +3,7 @@ from django.conf import settings
 from django.urls import path, include
 from django.conf.urls.static import static
 
-from main.views import IndexPageView, ChangeLanguageView
+from main.views import IndexPageView, ChangeLanguageView, MovieReccomdationView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -14,6 +14,7 @@ urlpatterns = [
     path('language/', ChangeLanguageView.as_view(), name='change_language'),
 
     path('accounts/', include('accounts.urls')),
+    path('recomendations/', MovieReccomdationView.as_view(), name='reccomend'),
 ]
 
 if settings.DEBUG:

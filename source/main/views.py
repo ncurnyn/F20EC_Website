@@ -7,3 +7,6 @@ class IndexPageView(TemplateView):
 
 class ChangeLanguageView(TemplateView):
     template_name = 'main/change_language.html'
+
+class MovieReccomdationView(TemplateView):
+    template_name = 'main/recomend.html'

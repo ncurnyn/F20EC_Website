@@ -15,7 +15,6 @@ urlpatterns = [
     path('resend/activation-code/', ResendActivationCodeView.as_view(), name='resend_activation_code'),
 
     path('sign-up/', SignUpView.as_view(), name='sign_up'),
-    path('recomendations/', LogOutView.as_view(), name='recomendation'),
     path('activate/<code>/', ActivateView.as_view(), name='activate'),
 
     path('restore/password/', RestorePasswordView.as_view(), name='restore_password'),
