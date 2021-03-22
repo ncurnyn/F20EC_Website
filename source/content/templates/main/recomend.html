@@ -6,7 +6,11 @@
 
     {% if request.user.is_authenticated %}
 
-        {% trans 'Movie Reccomendations will be displayed here,' %} <b>{{ request.user.username }}</b>.
+        {% trans 'Movie Reccomendations will be displayed here' %}
+
+        <form action="/reccomendation_system">
+            <button id="stat-btn" class="btn">Do it</button>
+        </form>
 
     {% else %}
 

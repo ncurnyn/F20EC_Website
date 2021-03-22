@@ -2,8 +2,9 @@ from django.contrib import admin
 from django.conf import settings
 from django.urls import path, include
 from django.conf.urls.static import static
+from main import views
 
-from main.views import IndexPageView, ChangeLanguageView, MovieReccomdationView
+from main.views import IndexPageView, ChangeLanguageView, MovieReccomdationView 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -15,6 +16,7 @@ urlpatterns = [
 
     path('accounts/', include('accounts.urls')),
     path('recomendations/', MovieReccomdationView.as_view(), name='reccomend'),
+    path('reccomendation_system/', views.reccomendation_system),
 ]
 
 if settings.DEBUG:
