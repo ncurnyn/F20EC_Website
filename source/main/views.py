@@ -39,6 +39,14 @@ def reccomendation_system(request):
     reader = Reader(rating_scale=(1, 5))
     data = Dataset.load_from_df(combined_movies_data, reader)
 
+    ###removing from the list the movies rateted by the current user
+    # get the list of the movie ids
+    unique_ids = combined_movies_data['itemID'].unique()
+    # get the list of the ids that the userid 1001 has rated
+    iids1001 = combined_movies_data.loc[combined_movies_data['userID'] == 1001, 'itemID']
+    # remove the rated movies for the recommendations
+    movies_to_predict = np.setdiff1d(unique_ids, iids1001)
+
     print("worked")
     return HttpResponse("""<html><script>window.location.replace('/');</script></html>""")
 

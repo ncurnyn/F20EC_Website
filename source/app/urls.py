@@ -16,7 +16,7 @@ urlpatterns = [
 
     path('accounts/', include('accounts.urls')),
     path('recomendations/', MovieReccomdationView.as_view(), name='reccomend'),
-    path('reccomendation_system/', views.reccomendation_system),
+    path('reccomendation_system/', views.reccomendation_system,name='script'),
 ]
 
 if settings.DEBUG:

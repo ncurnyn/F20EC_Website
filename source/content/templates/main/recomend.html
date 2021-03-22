@@ -9,7 +9,7 @@
         {% trans 'Movie Reccomendations will be displayed here' %}
 
         <form action="/reccomendation_system">
-            <button id="stat-btn" class="btn">Trigger Function</button>
+            <button onclick="location.href='{% url 'script' %}'">Trigger Function</button>
         </form>
 
     {% else %}
