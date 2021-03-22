@@ -47,7 +47,6 @@ def reccomendation_system(request):
     # remove the rated movies for the recommendations
     movies_to_predict = np.setdiff1d(unique_ids, iids1001)
 
-    print("worked")
     return HttpResponse("""<html><script>window.location.replace('/');</script></html>""")
 
 class IndexPageView(TemplateView):
