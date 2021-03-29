@@ -3,6 +3,7 @@ from django.conf import settings
 from django.urls import path, include
 from django.conf.urls.static import static
 from main import views
+from django.conf.urls import url
 
 from main.views import IndexPageView, ChangeLanguageView, MovieReccomdationView 
 
@@ -17,6 +18,10 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('recomendations/', MovieReccomdationView.as_view(), name='reccomend'),
     path('reccomendation_system/', views.reccomendation_system,name='script'),
+
+    url(r'^$', views.button),
+    url(r'^output', views.output,name='script'),
+
 ]
 
 if settings.DEBUG:

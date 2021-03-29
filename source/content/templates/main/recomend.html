@@ -9,8 +9,16 @@
         {% trans 'Movie Reccomendations will be displayed here' %}
 
         <form action="/reccomendation_system">
-            <button onclick="location.href='{% url 'script' %}'">Trigger Function</button>
+            <button onclick="location.href='{% url 'change_language' %}'">Trigger Function</button>
+            {% if data %}
+                {{data | safe}}
+            {% endif %}
         </form>
+
+        <button onclick="location.href='{% url 'script' %}'">Run Script</button>
+        {% if data %}
+            {{data | safe}}
+        {% endif %}
 
     {% else %}
 
