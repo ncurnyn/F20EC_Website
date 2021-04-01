@@ -8,6 +8,19 @@ from surprise import Reader, Dataset
 from django.shortcuts import render
 import requests
 
+class MovieRatingsView(TemplateView):
+    template_name = 'main/ratings.html'
+
+class IndexPageView(TemplateView):
+    template_name = 'main/index.html'
+
+class ChangeLanguageView(TemplateView):
+    template_name = 'main/change_language.html'
+
+class MovieReccomdationView(TemplateView):
+    template_name = 'main/recomend.html'
+
+
 def reccomendation_system(request):
     current_user = request.user
     user_id = request.user.id
@@ -74,15 +87,6 @@ def reccomendation_system(request):
     SDV_algo(1000)
     
     return render(request,'main/recomend.html')
-
-class IndexPageView(TemplateView):
-    template_name = 'main/index.html'
-
-class ChangeLanguageView(TemplateView):
-    template_name = 'main/change_language.html'
-
-class MovieReccomdationView(TemplateView):
-    template_name = 'main/recomend.html'
 
 def results(request):
     data = Students.objects.all()

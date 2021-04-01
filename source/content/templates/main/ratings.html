@@ -1,0 +1,17 @@
+{% extends 'layouts/default/page.html' %}
+
+{% load i18n %}
+
+{% block content %}
+
+    {% if request.user.is_authenticated %}
+
+        {% trans 'This is where users will rate individual movies' %}
+
+    {% else %}
+
+        {% trans 'You are not logged in. Log in to rate movies.' %}
+
+    {% endif %}
+
+{% endblock %}
