@@ -8,15 +8,6 @@ from surprise import Reader, Dataset
 from django.shortcuts import render
 import requests
 
-class IndexPageView(TemplateView):
-    template_name = 'main/index.html'
-
-class ChangeLanguageView(TemplateView):
-    template_name = 'main/change_language.html'
-
-class MovieReccomdationView(TemplateView):
-    template_name = 'main/recomend.html'
-
 def reccomendation_system(request):
     columns = ['user_id', 'item_id', 'rating', 'timestamp']
 
@@ -29,12 +20,12 @@ def reccomendation_system(request):
     movie_names = movies[['item_id', 'movie title']]
     combined_movies_data = pd.merge(df, movie_names, on='item_id')
     combined_movies_data = combined_movies_data[['user_id', 'movie title', 'rating']]
-    ### Current user's rating
+### Current user's rating
     my_ratings = pd.read_csv('main/ml-100k/my_movies_rating.csv')
-    #print(my_ratings)
+#print(my_ratings)
 
-    ### combining the dataset rating with the user rating to produre
-    ### later on bespoke recommendations for the user that asks them
+### combining the dataset rating with the user rating to produre
+### later on bespoke recommendations for the user that asks them
 
     combined_movies_data = combined_movies_data.append(my_ratings)
 #print(combined_movies_data.columns)
@@ -59,7 +50,6 @@ def reccomendation_system(request):
         movies_to_predict = np.setdiff1d(unique_ids, iids1001)
         return movies_to_predict
 
-
 #Recommender Systems using SDV
     def SDV_algo(id):
         movies_to_predict = personalise_movie_list_for_user(id)
@@ -78,15 +68,28 @@ def reccomendation_system(request):
             writer = csv.writer(f)
             writer.writerow(fields)
 
-    SDV_algo(1000) 
-    # inserting_row(1003, 3)
-    return render(request, 'main/recomend.html')
+    SDV_algo(1000)
     
-def button(request):
-    return render(request,'home.html')
+    return render(request,'main/recomend.html')
 
-def output(request):
-    data=requests.get("https://www.google.com/")
-    print(data.text)
-    data=data.text
-    return render(request,'main/recomend.html',{'data':data})
+class IndexPageView(TemplateView):
+    template_name = 'main/index.html'
+
+class ChangeLanguageView(TemplateView):
+    template_name = 'main/change_language.html'
+
+class MovieReccomdationView(TemplateView):
+    template_name = 'main/recomend.html'
+
+def results(request):
+    data = Students.objects.all()
+
+    stu = {
+        "student_number": data
+    }
+    return render_to_response("login/profile.html", stu)
+
+def sample_view(request):
+    current_user = request.user
+    print ("your user id is:",current_user.id)
+    return render(request, "main/recomend.html")

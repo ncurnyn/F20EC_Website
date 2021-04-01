@@ -18,9 +18,7 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('recomendations/', MovieReccomdationView.as_view(), name='reccomend'),
     path('reccomendation_system/', views.reccomendation_system,name='script'),
-
-    url(r'^$', views.button),
-    url(r'^output', views.output,name='script'),
+    path('sample_view/', views.sample_view, name='results'),
 
 ]
 
