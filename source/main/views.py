@@ -9,6 +9,9 @@ from django.shortcuts import render
 import requests
 
 def reccomendation_system(request):
+    current_user = request.user
+    user_id = request.user.id
+
     columns = ['user_id', 'item_id', 'rating', 'timestamp']
 
     df = pd.read_csv('main/ml-100k/u.data', sep='\t', names=columns)
@@ -40,7 +43,7 @@ def reccomendation_system(request):
     reader = Reader(rating_scale=(1, 5))
     data = Dataset.load_from_df(combined_movies_data, reader)
 
-    def personalise_movie_list_for_user(id):
+    def personalise_movie_list_for_user(user_id):
     ###removing from the list the movies rated by the current user
     # get the list of the movie ids
         unique_ids = combined_movies_data['itemID'].unique()
@@ -51,14 +54,14 @@ def reccomendation_system(request):
         return movies_to_predict
 
 #Recommender Systems using SDV
-    def SDV_algo(id):
+    def SDV_algo(user_id):
         movies_to_predict = personalise_movie_list_for_user(id)
         algo1 = SVD()
         algo1.fit(data.build_full_trainset())
         my_recs = []
         for iid in movies_to_predict:
             my_recs.append((iid, algo1.predict(uid=1001, iid=iid).est))
-
+            
         print(pd.DataFrame(my_recs, columns=['iid', 'predictions']).sort_values('predictions', ascending=False).head(10))
 
     def inserting_row(user_id, rating):
