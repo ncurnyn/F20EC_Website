@@ -19,16 +19,6 @@
         </br>
         </form>
 
-        <form action="/reccomendation_system">
-            <button onclick="location.href='{% url 'results' %}'">Output User ID</button>
-            {% if data %}
-                {{data | safe}}
-            {% endif %}
-
-        <br>
-        {{data}}
-    </br>
-
     {% else %}
 
         {% trans 'You are not logged in. Log in to view your movie recomendations.' %}

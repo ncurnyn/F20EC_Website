@@ -61,7 +61,7 @@ def reccomendation_system(request):
         my_recs = []
         for iid in movies_to_predict:
             my_recs.append((iid, algo1.predict(uid=1001, iid=iid).est))
-            
+
         print(pd.DataFrame(my_recs, columns=['iid', 'predictions']).sort_values('predictions', ascending=False).head(10))
 
     def inserting_row(user_id, rating):
@@ -91,8 +91,3 @@ def results(request):
         "student_number": data
     }
     return render_to_response("login/profile.html", stu)
-
-def sample_view(request):
-    current_user = request.user
-    print ("your user id is:",current_user.id)
-    return render(request, "main/recomend.html")

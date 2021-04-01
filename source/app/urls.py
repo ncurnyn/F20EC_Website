@@ -18,7 +18,6 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('recomendations/', MovieReccomdationView.as_view(), name='reccomend'),
     path('reccomendation_system/', views.reccomendation_system,name='script'),
-    path('sample_view/', views.sample_view, name='results'),
 
 ]
 
