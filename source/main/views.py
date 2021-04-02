@@ -1,4 +1,4 @@
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, CreateView
 import pandas as pd
 import numpy as np
 ###importing surprise library to implement the recommending systems needed
@@ -7,6 +7,7 @@ from surprise.model_selection import cross_validate
 from surprise import Reader, Dataset
 from django.shortcuts import render
 import requests
+from accounts.models import City
 
 class MovieRatingsView(TemplateView):
     template_name = 'main/ratings.html'
@@ -20,10 +21,10 @@ class ChangeLanguageView(TemplateView):
 class MovieReccomdationView(TemplateView):
     template_name = 'main/recomend.html'
 
-
 def reccomendation_system(request):
     current_user = request.user
     user_id = request.user.id
+    print("User ID:", user_id)
 
     columns = ['user_id', 'item_id', 'rating', 'timestamp']
 
@@ -94,4 +95,10 @@ def results(request):
     stu = {
         "student_number": data
     }
-    return render_to_response("login/profile.html", stu)
+    return render("login/profile.html", stu)
+
+def showlist(request):
+    city_istance = City.objects.create(name='Aladdin (1992)')
+    city_istance2 = City.objects.create(name='Braveheart (1995)')
+    results=City.objects.all
+    return render(request, "home.html",{"showcity":results})

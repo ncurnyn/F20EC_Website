@@ -6,7 +6,17 @@
 
     {% if request.user.is_authenticated %}
 
-        {% trans 'This is where users will rate individual movies' %}
+        <p>Please enter a movie below to rate it:</p>
+        <input type="text" list="citylist" Placeholder="Search for Movie.." class="form-control" style="width:300px;">
+        <datalist id="citylist">
+     {% for results in showcity %}
+            <option value="{{ results.name}}">
+     {% endfor %}
+     
+        <form action="" method="post">{% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Create" />
+        </form>
 
     {% else %}
 

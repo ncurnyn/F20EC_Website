@@ -15,10 +15,11 @@ urlpatterns = [
     path('i18n/', include('django.conf.urls.i18n')),
     path('language/', ChangeLanguageView.as_view(), name='change_language'),
     path('ratings/', MovieRatingsView.as_view(), name='rate'),
-
     path('accounts/', include('accounts.urls')),
     path('recomendations/', MovieReccomdationView.as_view(), name='reccomend'),
     path('reccomendation_system/', views.reccomendation_system,name='script'),
+    path('showlist/', views.showlist,name='showlist')
+    
 
 ]
 
