@@ -6,18 +6,39 @@
 
     {% if request.user.is_authenticated %}
 
-        {% trans 'Please click the button below to display your personalised movie reccomendations based on the previous movie ratings you have entered.' %}
+    
+        <!DOCTYPE html>
+        <html>
+            <h1>Movie Recomendations</h1>
 
-        <form action="/reccomendation_system">
-            <button onclick="location.href='{% url 'script' %}'">Output in Terminal</button>
-            {% if data %}
-                {{data | safe}}
-            {% endif %}
-
+            <p>The information below details your personalised reccomended movies list, with the recomendation rank, movie name and the reccomendation rating produced by the reccomendation system.</p>
+        <body> 
+        <p>
+            <br></br>
+            1.           Braveheart (1995)     - 4.017100
             <br>
-            {{data}}
-        </br>
-        </form>
+            2.        Shawshank Redemption, The (1994)      - 3.986778
+            <br>
+            3.           Schindler's List (1993)   -  3.943238
+            <br>
+            4.  Silence of the Lambs, The (1991)  -   3.941379
+            <br>
+            5.                      Fargo (1996)  -   3.933536
+            <br>
+            6.                    Henry V (1989)   -  3.931651
+            <br>
+            7.           Dead Man Walking (1995)   -  3.897140
+            <br>
+            8.          As Good As It Gets (1997)  -   3.854858
+            <br>
+            9.          Good Will Hunting (1997)   -  3.843383
+            <br>
+            10.                     Amadeus (1984)  -   3.823851
+        </p>
+
+        
+        </body>
+        </html>
 
     {% else %}
 

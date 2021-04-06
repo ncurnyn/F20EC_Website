@@ -4,8 +4,10 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from main import views
 from django.conf.urls import url
+from django.contrib.staticfiles.urls import static
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
-from main.views import IndexPageView, ChangeLanguageView, MovieReccomdationView, MovieRatingsView 
+from main.views import IndexPageView, ChangeLanguageView, MovieReccomdationView, MovieRatingsView, ResultsView 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -17,11 +19,11 @@ urlpatterns = [
     path('ratings/', MovieRatingsView.as_view(), name='rate'),
     path('accounts/', include('accounts.urls')),
     path('recomendations/', MovieReccomdationView.as_view(), name='reccomend'),
+    path('customer_churn_results/', ResultsView.as_view(), name='results'),
     path('reccomendation_system/', views.reccomendation_system,name='script'),
-    path('showlist/', views.showlist,name='showlist')
-    
-
+    path('reccomendation_system/', views.show_ratings,name='output'),
 ]
+
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -7,7 +7,6 @@ from surprise.model_selection import cross_validate
 from surprise import Reader, Dataset
 from django.shortcuts import render
 import requests
-from accounts.models import City
 
 class MovieRatingsView(TemplateView):
     template_name = 'main/ratings.html'
@@ -20,6 +19,9 @@ class ChangeLanguageView(TemplateView):
 
 class MovieReccomdationView(TemplateView):
     template_name = 'main/recomend.html'
+
+class ResultsView(TemplateView):
+    template_name = 'main/results.html'
 
 def reccomendation_system(request):
     current_user = request.user
@@ -89,16 +91,20 @@ def reccomendation_system(request):
     
     return render(request,'main/recomend.html')
 
-def results(request):
-    data = Students.objects.all()
-
-    stu = {
-        "student_number": data
-    }
-    return render("login/profile.html", stu)
-
-def showlist(request):
-    city_istance = City.objects.create(name='Aladdin (1992)')
-    city_istance2 = City.objects.create(name='Braveheart (1995)')
-    results=City.objects.all
-    return render(request, "home.html",{"showcity":results})
+def show_ratings():
+    return'''
+    <html>
+    <p>
+                                    movie    prediction
+                     Pulp Fiction (1994)     4.065248
+  One Flew Over the Cuckoo's Nest (1975)     4.037480
+        Shawshank Redemption, The (1994)     4.033309
+        Silence of the Lambs, The (1991)     4.028710
+              Wrong Trousers, The (1993)     4.022305
+                 Schindler's List (1993)     3.865269
+                   Third Man, The (1949)     3.863629
+            Raise the Red Lantern (1991)     3.852512
+                    Seven (Se7en) (1995)     3.814781
+                            Fargo (1996)     3.792600
+    </html>
+    </p>'''

@@ -6,22 +6,65 @@
 
     {% if request.user.is_authenticated %}
 
-        <p>Please enter a movie below to rate it:</p>
-        <input type="text" list="citylist" Placeholder="Search for Movie.." class="form-control" style="width:300px;">
-        <datalist id="citylist">
-     {% for results in showcity %}
-            <option value="{{ results.name}}">
-     {% endfor %}
-     
-        <form action="" method="post">{% csrf_token %}
-            {{ form.as_p }}
-            <input type="submit" value="Create" />
-        </form>
+        <html>
+    <body>
 
-    {% else %}
+    <h1>Movie Ratings</h1>
 
-        {% trans 'You are not logged in. Log in to rate movies.' %}
+    <p>Please select a movie to rate.</p>
 
-    {% endif %}
+    <form action="/ratings.html">
+    <label for="movies">Movies:</label>
+    <select name="movie" id="movie">
+        <option value="Aladdin (1992)">Aladdin (1992)</option>
+        <option value="Braveheart (1995)">Braveheart (1995)</option>
+        <option value="Clockwork Orange, A (1971)">Clockwork Orange, A (1971)</option>
+        <option value="Dances with Wolves (1990)">Dances with Wolves (1990)</option>
+        <option value="English Patient, The (1996)">English Patient, The (1996)</option>
+        <option value="Face/Off (1997)">Face/Off (1997)</option>
+        <option value="Forrest Gump (1994)">Forrest Gump (1994)</option>
+        <option value="Game, The (1997)">Game, The (1997)</option>
+        <option value="Godfather, The (1972)">Godfather, The (1972)</option>
+        <option value="Jurassic Park (1993)">Jurassic Park (1993)</option>
+        <option value="Liar Liar (1997)">Liar Liar (1997)</option>
+        <option value="Lion King, The (1994)">Lion King, The (1994)</option>
+        <option value="Pulp Fiction (1994)">Pulp Fiction (1994)</option>
+        <option value="Reservoir Dogs (1992)">Reservoir Dogs (1992)</option>
+        <option value="Return of the Jedi (1983)">Return of the Jedi (1983)</option>
+        <option value="Rock, The (1996)">Rock, The (1996)</option>
+        <option value="Scream (1996)">Scream (1996)</option>
+        <option value="Seven (Se7en) (1995)">Seven (Se7en) (1995)</option>
+        <option value="Silence of the Lambs, The (1991)">Silence of the Lambs, The (1991)</option>
+        <option value="Star Trek: First Contact (1996)">Star Trek: First Contact (1996)</option>
+        <option value="Star Trek: The Wrath of Khan (1982)">Star Trek: The Wrath of Khan (1982)</option>
+        <option value="Terminator 2: Judgment Day (1991)">Terminator 2: Judgment Day (1991)</option>
+        <option value="Titanic (1997)">Titanic (1997)</option>
+        <option value="Trainspotting (1996)">Trainspotting (1996)</option>
+    </select>
+    <br></br>
+</form>
+
+<p>What would you rate this movie out of 5?</p>
+<form action="/ratings.html">
+  <label for="rating">Rating:</label>
+  <select name="rating" id="rating">
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+</select>
+  <br></br>
+  <input type="submit" value="Submit">
+</form>
+
+
+
+{% else %}
+
+{% trans 'You are not logged in. Log in to rate movies' %}
+
+{% endif %}
 
 {% endblock %}
+

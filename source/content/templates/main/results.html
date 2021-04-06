@@ -1,0 +1,29 @@
+{% extends 'layouts/default/page.html' %}
+
+{% load i18n %}
+
+{% block content %}
+
+    {% if request.user.is_authenticated %}
+
+    {% trans 'Please see below the outputted results from the customer churn model.' %}
+    <br></br>
+
+    <html>
+    <body>
+
+    <h2>Regression Trees</h2>
+    <img src="/Users/neve/Desktop/Fourth Year/Semester 2/E-Commerce/cw2/F20EC_Website/source/content/templates/main/tree1.png" alt="tree1">
+    <br>
+    <img src="/Users/neve/Desktop/Fourth Year/Semester 2/E-Commerce/cw2/F20EC_Website/source/content/templates/main/tree2.jpg" alt="tree2">
+    </body>
+    </html>
+
+{% else %}
+
+{% trans 'You are not logged in. Log in to view customer churn results' %}
+
+{% endif %}
+
+{% endblock %}
+
